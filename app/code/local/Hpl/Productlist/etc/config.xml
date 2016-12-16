@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hpl_Productlist>
+            <version>1.0.0</version>
+        </Hpl_Productlist>
+    </modules>
+    <global>
+        <models>
+            <hpl_productlist>
+                <class>Hpl_Productlist_Model</class>
+            </hpl_productlist>
+        </models>
+        <blocks>
+            <hpl_productlist>
+                <class>Hpl_Productlist_Block</class>
+            </hpl_productlist>
+        </blocks>
+        <helpers>
+            <hpl_productlist>
+                <class>Hpl_Productlist_Helper</class>
+            </hpl_productlist>
+        </helpers>
+        <events>
+            <controller_front_init_routers> <!-- create a custom router to handle the 'new-products' url -->
+                <observers>
+                    <hpl_productlist>
+                        <class>Hpl_Productlist_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </hpl_productlist>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+    <frontend>
+        <routers> <!-- declare a router -->
+            <newproducts>
+                <use>standard</use>
+                <args>
+                    <module>Hpl_Productlist</module>
+                    <frontName>newproducts</frontName>
+                </args>
+            </newproducts>
+        </routers>
+        <layout>
+            <updates>
+                <hpl_productlist>
+                    <file>hpl_productlist.xml</file>
+                </hpl_productlist>
+            </updates>
+        </layout>
+    </frontend>
+</config>
